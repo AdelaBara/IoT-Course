@@ -99,8 +99,8 @@ def create_sensor_data_chart():
     fig.update_layout(
         title="24-Hour Sensor Data Timeline",
         xaxis=dict(title="Time"),
-        yaxis=dict(title="Temperature (°C)", titlefont=dict(color='#e74c3c')),
-        yaxis2=dict(title="Humidity (%)", titlefont=dict(color='#3498db'),
+        yaxis=dict(title="Temperature (°C)"),
+        yaxis2=dict(title="Humidity (%)",
                     overlaying='y', side='right'),
         hovermode='x unified',
         height=400
@@ -147,8 +147,8 @@ def create_sensor_data_chart_clean():
     fig.update_layout(
         title="24-Hour Sensor Data Timeline",
         xaxis=dict(title="Time"),
-        yaxis=dict(title="Temperature (C)", titlefont=dict(color='#e74c3c')),
-        yaxis2=dict(title="Humidity (%)", titlefont=dict(color='#3498db'),
+        yaxis=dict(title="Temperature (C)"),
+        yaxis2=dict(title="Humidity (%)",
                     overlaying='y', side='right'),
         hovermode='x unified',
         height=400
@@ -185,8 +185,8 @@ def create_energy_monitoring_chart():
     fig.update_layout(
         title="Smart Plug Energy Monitoring",
         xaxis=dict(title="Time"),
-        yaxis=dict(title="Power (W)", titlefont=dict(color='#3498db')),
-        yaxis2=dict(title="Cumulative Energy (kWh)", titlefont=dict(color='#e74c3c'),
+        yaxis=dict(title="Power (W)"),
+        yaxis2=dict(title="Cumulative Energy (kWh)",
                     overlaying='y', side='right'),
         height=400,
         hovermode='x unified'
