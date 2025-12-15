@@ -1,0 +1,75 @@
+Internet of Things (IoT) – Lecture Notes
+1. Introduction to IoT Systems
+The Internet of Things (IoT) refers to the paradigm where physical objects such as sensors, actuators, and everyday devices are interconnected through the internet, enabling them to collect, exchange, and act upon data. IoT systems bridge the physical and digital worlds, allowing automated decision-making and intelligent services.
+
+An IoT system is typically composed of four layers: the perception layer (sensors and actuators), the network layer (communication technologies), the processing layer (edge or cloud computing), and the application layer (user-facing services). Understanding this layered architecture is essential for designing scalable and reliable IoT solutions.
+
+IoT is closely related to Cyber-Physical Systems (CPS), where computation, networking, and physical processes are tightly integrated. Unlike traditional IT systems, IoT deployments must handle real-world uncertainty, hardware constraints, and continuous data streams.
+2. Sensors and Actuators
+Sensors are the fundamental components that enable IoT systems to perceive the physical environment. Temperature and humidity sensors measure environmental conditions using physical principles such as electrical resistance, capacitance, or semiconductor behavior. Key performance metrics include accuracy, resolution, sampling frequency, and response time.
+
+Actuators, on the other hand, allow IoT systems to influence the physical world. Smart plugs are a common actuator that enable remote switching of electrical loads. Understanding the operational limits, latency, and reliability of actuators is crucial for building stable control systems.
+
+In practice, sensors and actuators are subject to noise, drift, and failures. Therefore, IoT applications must incorporate validation, filtering, and fault-tolerant design principles.
+3. Communication Protocols
+Communication is the backbone of IoT systems. Devices typically connect using wireless technologies such as Wi-Fi, Bluetooth Low Energy (BLE), Zigbee, or Z-Wave. Each technology involves trade-offs in terms of range, bandwidth, power consumption, and scalability.
+
+At the application layer, protocols such as HTTP, MQTT, and CoAP are widely used. HTTP follows a request–response model, while MQTT uses a lightweight publish–subscribe approach that is particularly well-suited for IoT environments. Understanding these communication paradigms helps in selecting the appropriate protocol for specific use cases.
+
+Reliability, latency, and security are key concerns in IoT communication, especially when devices operate over public networks.
+4. Node-RED Middleware
+Node-RED is a flow-based development environment designed to simplify the integration of hardware devices, APIs, and online services. It acts as middleware, orchestrating data flows between sensors, processing logic, and actuators.
+
+Node-RED uses visual programming concepts where nodes represent functional blocks and flows represent data paths. Function nodes allow custom logic using JavaScript, enabling rapid prototyping and deployment.
+
+In IoT systems, Node-RED often runs on edge devices such as Raspberry Pi or local servers, providing low-latency processing and resilience against network failures.
+5. Device Integration
+Integrating heterogeneous devices is one of the main challenges in IoT. Vendors such as TP-Link and Broadlink provide proprietary ecosystems, APIs, and cloud services. Node-RED supports device integration through community-contributed nodes and API-based communication.
+
+A key design decision is whether devices are controlled locally or via cloud platforms. Local control improves latency and privacy, while cloud-based control enables remote access and analytics.
+
+Robust IoT applications must handle device disconnections, API changes, and authentication token expiration gracefully.
+6. Data Handling and Storage
+IoT systems generate large volumes of time-series data. Proper data handling involves structuring data with timestamps, metadata, and contextual information. JSON is the most common data format due to its readability and flexibility.
+
+Data can be stored locally for low-latency access or in the cloud for scalability and long-term analytics. Time-series databases such as InfluxDB are optimized for sensor data and support efficient querying and aggregation.
+
+Preprocessing steps such as filtering, aggregation, and anomaly detection are often applied before data is used for visualization or decision-making.
+7. Dashboards and Visualization
+Visualization plays a critical role in human–IoT interaction. Dashboards allow users to monitor system status, understand trends, and manually control devices.
+
+Effective dashboards prioritize clarity, real-time feedback, and usability. Node-RED provides built-in dashboard nodes for creating charts, gauges, and control elements with minimal effort.
+
+For advanced visualization and analytics, external tools such as Grafana can be integrated with Node-RED and time-series databases.
+8. Automation and Control
+Automation enables IoT systems to operate without continuous human intervention. Rule-based control is commonly used, where predefined conditions trigger specific actions.
+
+IoT automation can be event-driven (reacting to sensor updates) or time-based (scheduled actions). Care must be taken to avoid unstable behavior, such as frequent on/off switching, which can be mitigated using hysteresis and delays.
+
+More advanced systems may combine multiple sensor inputs and contextual information to make decisions.
+9. Edge vs Cloud Computing
+IoT systems can process data at the edge, in the cloud, or using a hybrid approach. Edge computing reduces latency, improves privacy, and increases resilience by processing data close to the source.
+
+Cloud computing offers scalability, centralized management, and advanced analytics. Hybrid architectures combine both approaches, performing real-time control at the edge and long-term analysis in the cloud.
+
+Understanding these trade-offs is essential for designing efficient and reliable IoT systems.
+10. Security and Privacy
+Security is a critical concern in IoT due to the large attack surface and often limited device resources. Common threats include unauthorized access, data interception, and device hijacking.
+
+Best practices include strong authentication, encrypted communication, regular updates, and network segmentation. Node-RED dashboards and APIs should be protected using authentication mechanisms.
+
+Privacy considerations are especially important when IoT systems collect personal or sensitive data, requiring compliance with regulations such as GDPR.
+11. Energy Awareness and Sustainability
+IoT plays a significant role in improving energy efficiency and sustainability. Smart plugs and sensors enable real-time monitoring of energy usage and environmental conditions.
+
+Automation strategies can reduce waste by turning off devices when not needed or shifting loads to off-peak periods. These concepts are particularly relevant in smart homes and energy communities.
+
+Sustainable IoT design also considers the environmental impact of devices, communication, and data processing.
+12. Scalability and System Design
+While many IoT projects start as small prototypes, real-world deployments must scale to hundreds or thousands of devices. Scalability requires careful system design, modular architectures, and standardized data models.
+
+Device management, logging, and monitoring are essential for maintaining large-scale IoT systems. Differences between prototype and production environments should be clearly understood by system designers.
+13. Capstone Project
+The capstone project integrates all concepts covered in the course. Students design, implement, and document a complete IoT system using sensors, actuators, Node-RED, and dashboards.
+
+The project emphasizes system architecture, reliability, and usability. Students are encouraged to justify design choices and reflect on limitations and future improvements.
