@@ -2396,7 +2396,11 @@ with st.expander("🔗 Quick Reference & Resources"):
 st.markdown("---")
 st.markdown("""
 <div style='text-align: center; color: #666;'>
-    <p>Adela Bara (https://adela-bara.ase.ro/) - IoT Systems Course | Node-RED Laboratory | December 2025</p>
+    <p>IoT Systems Course | Node-RED Laboratory | December 2025</p>
     <p>Built with Streamlit 🎈</p>
 </div>
 """, unsafe_allow_html=True)
+st.markdown("""
+        **Created by**
+        - [Adela Bara](https://adela-bara.ase.ro/)
+        """)
