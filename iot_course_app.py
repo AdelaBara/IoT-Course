@@ -2400,7 +2400,4 @@ st.markdown("""
     <p>Built with Streamlit 🎈</p>
 </div>
 """, unsafe_allow_html=True)
-st.markdown("""
-        **Created by**
-        - [Adela Bara](https://adela-bara.ase.ro/)
-        """)
+st.markdown(""" Created by [Adela Bara](https://adela-bara.ase.ro/) """)
