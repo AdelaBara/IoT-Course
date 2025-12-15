@@ -108,6 +108,54 @@ def create_sensor_data_chart():
     
     return fig
 
+def create_sensor_data_chart_clean():
+    """Create sample sensor data visualization (clean labels)"""
+    hours = 24
+    timestamps = pd.date_range(end=datetime.now(), periods=hours, freq='H')
+
+    temp_base = 20
+    temp_variation = 5 * np.sin(np.linspace(0, 2*np.pi, hours)) + np.random.normal(0, 0.5, hours)
+    temperature = temp_base + temp_variation
+
+    humidity = 65 - temp_variation + np.random.normal(0, 2, hours)
+
+    df = pd.DataFrame({
+        'Time': timestamps,
+        'Temperature (C)': temperature,
+        'Humidity (%)': humidity
+    })
+
+    fig = go.Figure()
+
+    fig.add_trace(go.Scatter(
+        x=df['Time'], y=df['Temperature (C)'],
+        mode='lines+markers',
+        name='Temperature',
+        line=dict(color='#e74c3c', width=3),
+        marker=dict(size=6)
+    ))
+
+    fig.add_trace(go.Scatter(
+        x=df['Time'], y=df['Humidity (%)'],
+        mode='lines+markers',
+        name='Humidity',
+        line=dict(color='#3498db', width=3),
+        marker=dict(size=6),
+        yaxis='y2'
+    ))
+
+    fig.update_layout(
+        title="24-Hour Sensor Data Timeline",
+        xaxis=dict(title="Time"),
+        yaxis=dict(title="Temperature (C)", titlefont=dict(color='#e74c3c')),
+        yaxis2=dict(title="Humidity (%)", titlefont=dict(color='#3498db'),
+                    overlaying='y', side='right'),
+        hovermode='x unified',
+        height=400
+    )
+
+    return fig
+
 def create_energy_monitoring_chart():
     """Create energy consumption visualization"""
     hours = pd.date_range(end=datetime.now(), periods=24, freq='H')
@@ -1968,7 +2016,7 @@ if selected_topic:
                 yaxis_title="Score",
                 height=400
             )
-            st.plotly_chart(fig_platforms, use_container_width=True)
+            st.plotly_chart(fig_platforms, width='stretch')
             
             # Memory comparison
             col1, col2 = st.columns(2)
@@ -1979,7 +2027,7 @@ if selected_topic:
                     'RAM': ['2 KB', '4 GB', '80 KB', '520 KB'],
                     'Flash': ['32 KB', '32 GB SD', '4 MB', '4 MB']
                 })
-                st.dataframe(memory_data, hide_index=True, use_container_width=True)
+                st.dataframe(memory_data, hide_index=True, width='stretch')
             
             with col2:
                 st.markdown("### ⚡ Power Consumption")
@@ -1988,7 +2036,7 @@ if selected_topic:
                     'Active': ['50 mA', '600 mA', '80 mA', '160 mA'],
                     'Sleep': ['15 mA', 'N/A', '20 µA', '10 µA']
                 })
-                st.dataframe(power_data, hide_index=True, use_container_width=True)
+                st.dataframe(power_data, hide_index=True, width='stretch')
             # Hardware platform images
             st.markdown("---")
             st.subheader("🖼️ IoT Hardware platforms")
@@ -1997,26 +2045,26 @@ if selected_topic:
             
             with col1:
                 try:
-                    st.image("Pics/arduino.jpg", caption="Arduino Uno", use_container_width=True)
+                    st.image("Pics/arduino.jpg", caption="Arduino Uno", width='stretch')
                 except:
                     st.info("Arduino Uno\n(Image not found)")
             
             with col2:
                 try:
-                    st.image("Pics/raspberry-pi-4.png", caption="Raspberry Pi 4", use_container_width=True)
+                    st.image("Pics/raspberry-pi-4.png", caption="Raspberry Pi 4", width='stretch')
                 except:
                     st.info("Raspberry Pi 4\n(Image not found)")
             
             with col3:
                 try:
-                    st.image("Pics/esp8266.png", caption="ESP8266", use_container_width=True)
+                    st.image("Pics/esp8266.png", caption="ESP8266", width='stretch')
                 except:
                     st.info("ESP8266\n(Image not found)")
             
         elif selected_topic == "3. Sensors & Actuators":
             st.markdown("---")
             st.subheader("📈 Sensor Data Example")
-            st.plotly_chart(create_sensor_data_chart(), use_container_width=True)
+            st.plotly_chart(create_sensor_data_chart_clean(), width='stretch')
             
             col1, col2 = st.columns(2)
             with col1:
@@ -2025,7 +2073,7 @@ if selected_topic:
                     'Parameter': ['Range', 'Accuracy', 'Resolution', 'Sample Rate'],
                     'Value': ['-20 to 60°C', '±0.5°C', '0.1°C', '1-60 sec']
                 })
-                st.dataframe(specs_temp, hide_index=True, use_container_width=True)
+                st.dataframe(specs_temp, hide_index=True, width='stretch')
             
             with col2:
                 st.markdown("### 💧 Humidity Sensor Specs")
@@ -2033,7 +2081,7 @@ if selected_topic:
                     'Parameter': ['Range', 'Accuracy', 'Resolution', 'Sample Rate'],
                     'Value': ['0-100%', '±3%', '0.1%', '1-60 sec']
                 })
-                st.dataframe(specs_hum, hide_index=True, use_container_width=True)
+                st.dataframe(specs_hum, hide_index=True, width='stretch')
             
             # Sensors and actuators images
             st.markdown("---")
@@ -2043,19 +2091,19 @@ if selected_topic:
             
             with col1:
                 try:
-                    st.image("Pics/broadlink RM4Mini.jpg", caption="Broadlink RM4 Mini", use_container_width=True)
+                    st.image("Pics/broadlink RM4Mini.jpg", caption="Broadlink RM4 Mini", width='stretch')
                 except:
                     st.info("Broadlink\n(Image not found)")
             
             with col2:
                 try:
-                    st.image("Pics/Tapo P110M.jpg", caption="Tapo P110 M", use_container_width=True)
+                    st.image("Pics/Tapo P110M.jpg", caption="Tapo P110 M", width='stretch')
                 except:
                     st.info("Tapo P110M\n(Image not found)")
             
             with col3:
                 try:
-                    st.image("Pics/Tapo P115.jpg", caption="Tapo P115", use_container_width=True)
+                    st.image("Pics/Tapo P115.jpg", caption="Tapo P115", width='stretch')
                 except:
                     st.info("Tapo P115\n(Image not found)")
         elif selected_topic == "4. IoT Communication protocols":
@@ -2075,7 +2123,7 @@ if selected_topic:
             st.markdown("---")
             st.subheader("🛠️ Node-RED Flow Example")
             try:
-                    st.image("Pics/Node-RED-Flow.png", caption="Node-RED Flow Example", use_container_width=True)
+                    st.image("Pics/Node-RED-Flow.png", caption="Node-RED Flow Example", width='stretch')
             except:
                     st.info("Node-RED Flow Example\n(Image not found)")
             
@@ -2105,7 +2153,7 @@ if selected_topic:
                             'value': 28}
                     }))
                 fig_gauge.update_layout(height=300)
-                st.plotly_chart(fig_gauge, use_container_width=True)
+                st.plotly_chart(fig_gauge, width='stretch')
             
             with col2:
                 fig_gauge2 = go.Figure(go.Indicator(
@@ -2122,9 +2170,9 @@ if selected_topic:
                             {'range': [70, 100], 'color': "lightblue"}]
                     }))
                 fig_gauge2.update_layout(height=300)
-                st.plotly_chart(fig_gauge2, use_container_width=True)
+                st.plotly_chart(fig_gauge2, width='stretch')
                             
-                st.plotly_chart(create_sensor_data_chart(), use_container_width=True)
+                st.plotly_chart(create_sensor_data_chart_clean(), width='stretch')
         
         elif selected_topic == "9. Automation & Rule-based control":
             st.markdown("---")
@@ -2152,7 +2200,7 @@ if selected_topic:
             fig_hyst.add_hline(y=22, line_dash="dot", line_color="blue", annotation_text="Turn OFF (22°C)")
             fig_hyst.update_layout(title="Temperature Control with Hysteresis (2°C Dead Band)", 
                                   xaxis_title="Time (hours)", yaxis_title="Temperature (°C)", height=400)
-            st.plotly_chart(fig_hyst, use_container_width=True)
+            st.plotly_chart(fig_hyst, width='stretch')
             
             st.info("💡 **Hysteresis prevents rapid ON/OFF cycling** by having different thresholds for turning ON (26°C) and OFF (22°C). The green shaded area shows when the plug is active.")
         
@@ -2167,11 +2215,11 @@ if selected_topic:
                 'Edge': ['Yes', 'Yes', 'Yes', 'No'],
                 'Cloud': ['No', 'No', 'No', 'Yes']
             })
-            st.dataframe(processing_data, hide_index=True, use_container_width=True)
+            st.dataframe(processing_data, hide_index=True, width='stretch')
             st.markdown("---")
             st.subheader("📊 Edge vs Cloud Analysis")
             st.image("Pics/Edge-vs-Cloud.png", caption="Edge vs Cloud Computing", width='content')
-            st.plotly_chart(create_edge_vs_cloud_comparison(), use_container_width=True)
+            st.plotly_chart(create_edge_vs_cloud_comparison(), width='stretch')
             
             st.markdown("### ⚡ Latency Comparison")
             latency_data = pd.DataFrame({
@@ -2187,7 +2235,7 @@ if selected_topic:
                                          y=latency_data['Cloud (ms)'], marker_color='#3498db'))
             fig_latency.update_layout(barmode='group', title='Response Time Comparison', 
                                      yaxis_title='Latency (ms)', height=350)
-            st.plotly_chart(fig_latency, use_container_width=True)
+            st.plotly_chart(fig_latency, width='stretch')
         
         elif selected_topic == "12. Cloud platforms":
             st.markdown("---")
@@ -2199,7 +2247,7 @@ if selected_topic:
                 'AWS': ['IoT Core', 'Device Management', 'Rules Engine', 'Timestream', 'Kinesis', 'SageMaker'],
                 'Azure': ['IoT Hub', 'Device Provisioning', 'Routes & Endpoints', 'Time Series Insights', 'Stream Analytics', 'Azure ML']
             })
-            st.dataframe(services_data, hide_index=True, use_container_width=True)
+            st.dataframe(services_data, hide_index=True, width='stretch')
             
             # Cost comparison visualization
             st.markdown("### 💰 Monthly Cost Estimation")
@@ -2262,7 +2310,7 @@ if selected_topic:
         elif selected_topic == "13. Energy awareness & sustainability":
             st.markdown("---")
             st.subheader("⚡ Energy Monitoring Dashboard")
-            st.plotly_chart(create_energy_monitoring_chart(), use_container_width=True)
+            st.plotly_chart(create_energy_monitoring_chart(), width='stretch')
             
             st.markdown("### 💰 Energy Savings Calculator")
             col1, col2 = st.columns(2)
