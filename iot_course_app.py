@@ -63,7 +63,7 @@ def create_iot_architecture_diagram():
 def create_sensor_data_chart():
     """Create sample sensor data visualization"""
     hours = 24
-    timestamps = pd.date_range(end=datetime.now(), periods=hours, freq='H')
+    timestamps = pd.date_range(end=datetime.now(), periods=hours, freq=pd.offsets.Hour())
     
     temp_base = 20
     temp_variation = 5 * np.sin(np.linspace(0, 2*np.pi, hours)) + np.random.normal(0, 0.5, hours)
@@ -111,7 +111,7 @@ def create_sensor_data_chart():
 def create_sensor_data_chart_clean():
     """Create sample sensor data visualization (clean labels)"""
     hours = 24
-    timestamps = pd.date_range(end=datetime.now(), periods=hours, freq='H')
+    timestamps = pd.date_range(end=datetime.now(), periods=hours, freq=pd.offsets.Hour())
 
     temp_base = 20
     temp_variation = 5 * np.sin(np.linspace(0, 2*np.pi, hours)) + np.random.normal(0, 0.5, hours)
@@ -158,7 +158,7 @@ def create_sensor_data_chart_clean():
 
 def create_energy_monitoring_chart():
     """Create energy consumption visualization"""
-    hours = pd.date_range(end=datetime.now(), periods=24, freq='H')
+    hours = pd.date_range(end=datetime.now(), periods=24, freq=pd.offsets.Hour())
     
     base_consumption = [50, 45, 40, 40, 45, 60, 150, 200, 180, 160, 140, 120,
                        130, 140, 150, 180, 200, 250, 220, 180, 150, 120, 80, 60]
